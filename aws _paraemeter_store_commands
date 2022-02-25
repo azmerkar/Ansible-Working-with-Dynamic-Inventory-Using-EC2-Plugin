@@ -1,0 +1,16 @@
+3  ansible-vault encrypt inventory.txt
+    4  ansible all -m ping -o
+    5  ansible all -m ping -o --ask-vault-pass
+    6  vim inventory.txt 
+    7  ansible-vault edit inventory.txt
+    8  ansible ungrouped -m ping -o --ask-vault-pass
+    9  ansible-vault decrypt inventory.txt
+   10  echo "Pl123456" > pass.txt
+   11  ansible-vault encrypt inventory.txt 
+   12  ansible all -m ping -o
+   13  ansible all -m ping -o --vault-password-file ./pass.txt
+   14  aws --region=us-east-1 ssm get-parameters --names "vault_passwd" --query "Parameters[*].{Value:Value}" --output text
+   15  ll
+   16  chmod +x vault_passwd.sh 
+   17  ansible all -m ping -o --vault-password-file ./vault_passwd.sh
+   18  bash ./vault_passwd.sh 
