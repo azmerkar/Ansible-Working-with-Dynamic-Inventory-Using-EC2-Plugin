@@ -2,7 +2,7 @@
   hosts: all
   become: true
   vars_files:
-    - secret.yml
+    - secret.yaml
   tasks:
     - name: creating user
       user:
